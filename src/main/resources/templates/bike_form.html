@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <style>
+        body{
+        background-image: url("https://images.pexels.com/photos/2270328/pexels-photo-2270328.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-repeat: no-repeat;
+         background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+        .text-center{
+        padding-top: 50px;
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+    <form name="myForm" onsubmit="return validation()" th:action="@{/bikes/save}" method="post"
+          th:object="${bike}" style="max-width: 500px; margin: auto; background-color: #CCE5FF">
+        <input type="hidden" th:field="*{id}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Number:</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{number}" class="form-control" required placeholder="Enter the number"
+                           value=""/>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Color:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="color" th:field="*{color}" required>
+                        <option th:each="color : ${T(com.example.mywebapp.bike.Color).values()}"
+                                th:value="${color}" th:text="${color}"></option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Weight:</label>
+                <div class="col-sm-8">
+                    <input type="text" onclick="return val();" th:field="*{weight}" class="form-control" required
+                           placeholder="Enter the weight"/>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Size:</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="size" th:field="*{size}" required>
+                        <option th:each="size : ${T(com.example.mywebapp.bike.Size).values()}"
+                                th:value="${size}" th:text="${size}"></option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script>
+function validation(){
+var weight = document.myForm.weight.value;
+var number = document.myForm.number.value;
+
+if(weight==null || weight==""){
+alert("Please provide weight");
+return false;
+}
+else if(weight.length >2){
+alert("The weight is to high");
+}
+else if(isNaN(weight)){
+alert("Please enter correct weight);
+}
+
+if(number==null || number==""){
+alert("Please provide number");
+return false;
+}
+else if(number.length >7){
+alert("The number is to high");
+}
+else if(isNaN(number)){
+alert("Please enter correct number);
+}
+}
+
+
+
+</script>
+
+</body>
+</html>

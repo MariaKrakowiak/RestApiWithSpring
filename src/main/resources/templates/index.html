@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to my application!</title>
+    <title>Rental service</title>
+    <style>
+        body{
+        background-image: url("https://images.pexels.com/photos/2270328/pexels-photo-2270328.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-repeat: no-repeat;
+         background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+        p.ex1 {
+            padding-left: 100px;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        a.ex2 {
+         color: white;
+           padding-left: 1170px;
+            text-align: center;
+            <!--padding-top: 100px;-->
+
+        }
+
+    </style>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
-<div class = "container-fluid text-center">
-<h1>Welcome to my application!!!</h1>
-    <a class th:href="@{/users}">Manage Users</a>
 
-    </div>
+
+<div class="container-fluid">
+
+    <p class="ex1" style="font-size:100px">Rental service application</p>
+    <a class="ex2" style="font-size:25px" th:href="@{/bikes}">Click here to manage bikes</a>
+</div>
 </body>
 </html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage bikes</title>
+    <style>
+        body{
+        background-image: url("https://images.pexels.com/photos/2270328/pexels-photo-2270328.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-repeat: no-repeat;
+         background-attachment: fixed;
+            background-size: cover;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+             p.ex1 {
+            padding-left: 100px;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        a.ex2 {
+        color: white;
+           padding-left: 100px;
+            text-align: center;
+            <!--padding-top: 100px;-->
+
+
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <p class="ex1" style="font-size:50px">Manage bikes</p>
+    <a class="ex2" th:href="@{/bikes/new}" style="font-size:25px">Add new bike</a>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+
+
+    </div>
+    <div>
+        <table class="table table-striped" bgcolor="white">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Number</th>
+                <th>Color</th>
+                <th>Weight</th>
+                <th>Size</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="bike: ${listBikes}">
+                <tr>
+                    <td>[[${bike.id}]]</td>
+                    <td>[[${bike.number}]]</td>
+                    <td>[[${bike.color}]]</td>
+                    <td>[[${bike.weight}]]</td>
+                    <td>[[${bike.size}]]</td>
+                    <td>
+                   <!--     <a class="h4 mr-3" th:href="@{'/bikes/edit/'+${bike.id}}">Edit</a>
+                        <a class="h4 mr-3" th:href="@{'/bikes/delete/'+${bike.id}}">Delete</a>-->
+                  <!--      <a th:href="@{'/bikes/edit/'+${bike.id}}" class="btn btn-primary">Edit</a>-->
+                        <a class="h4 mr-3" th:href="@{'/bikes/edit/'+${bike.id}}">Edit</a>
+                        <a class="h4 mr-3" th:href="@{'/bikes/delete/'+${bike.id}}">Delete</a>
+
+                       <!-- <button type="submit" class="btn btn-primary m-2" onclick="editBike()">Edit</button>
+                        <button type="button" class="btn btn-primary m-2" onclick="deleteBike()">Delete</button>
+-->
+
+
+
+
+
+                    </td>
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function editBike(){
+    window.location="@{'/bikes/edit/'+${bike.id}}";
+    }
+    function deleteBike(){
+    window.location="@{'/bikes/delete/'+${bike.id}}";
+    }
+
+</script>
+</body>
+</html>

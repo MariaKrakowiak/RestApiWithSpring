@@ -1,8 +1,7 @@
-package com.example.mywebapp;
+/*package com.example.mywebapp;
 
-import com.example.mywebapp.user.User;
-import com.example.mywebapp.user.UserRepository;
-import org.assertj.core.api.Assert;
+import com.example.mywebapp.user.Bike;
+import com.example.mywebapp.user.BikeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,32 +14,32 @@ import java.util.Optional;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
-public class UserRepositoryTest {
+public class BikeRepositoryTest {
     @Autowired
-    private UserRepository repo;
+    private BikeRepository repo;
 
     @Test
     public void testAddNew() {
-        User user = new User();
-        user.setEmail("user@user.com");
-        user.setFirstName("User");
-        user.setLastName("User");
-        user.setPassword("user123");
+        Bike bike = new Bike();
+        bike.setEmail("user@user.com");
+        bike.setFirstName("User");
+        bike.setLastName("User");
+        bike.setPassword("user123");
 
-        User savedUser = repo.save(user);
-        Assertions.assertThat(savedUser).isNotNull();
-        Assertions.assertThat(savedUser.getId()).isGreaterThan(0);
+        Bike savedBike = repo.save(bike);
+        Assertions.assertThat(savedBike).isNotNull();
+        Assertions.assertThat(savedBike.getId()).isGreaterThan(0);
 
     }
 
     @Test
     public void testFindAll() {
-        Iterable<User> all = repo.findAll();
+        Iterable<Bike> all = repo.findAll();
 
         Assertions.assertThat(all).hasSizeGreaterThan(0);
 
-        for (User user : all) {
-            System.out.println(user);
+        for (Bike bike : all) {
+            System.out.println(bike);
         }
 
     }
@@ -48,21 +47,21 @@ public class UserRepositoryTest {
     @Test
     public void testUpdate() {
         Integer userId = 1;
-        Optional<User> byId = repo.findById(userId);
+        Optional<Bike> byId = repo.findById(userId);
 
-        User user = byId.get();
-        user.setPassword("sth");
-        repo.save(user);
+        Bike bike = byId.get();
+        bike.setPassword("sth");
+        repo.save(bike);
 
-        User updatedUser = repo.findById(userId).get();
-        Assertions.assertThat(updatedUser.getPassword().equals("sth"));
+        Bike updatedBike = repo.findById(userId).get();
+        Assertions.assertThat(updatedBike.getPassword().equals("sth"));
 
     }
 
     @Test
     public void testGet() {
         Integer userId = 1;
-        Optional<User> byId = repo.findById(userId);
+        Optional<Bike> byId = repo.findById(userId);
 
         Assertions.assertThat(byId).isPresent();
         System.out.println(byId.get());
@@ -73,7 +72,7 @@ public class UserRepositoryTest {
     public void testDelete() {
         Integer userId = 2;
         repo.deleteById(userId);
-        Optional<User> byId = repo.findById(userId);
+        Optional<Bike> byId = repo.findById(userId);
         Assertions.assertThat(byId).isNotPresent();
     }
-}
+}*/
