@@ -21,10 +21,10 @@ public class BikeRepositoryTest {
     @Test
     public void testAddNew() {
         Bike bike = new Bike();
-        bike.setEmail("user@user.com");
-        bike.setFirstName("User");
-        bike.setLastName("User");
-        bike.setPassword("user123");
+        bike.setNumber(1111);
+        bike.setColor(Color.WHITE);
+        bike.setWeight(50);
+        bike.setSize(Size.XS);
 
         Bike savedBike = repo.save(bike);
         Assertions.assertThat(savedBike).isNotNull();
@@ -46,22 +46,22 @@ public class BikeRepositoryTest {
 
     @Test
     public void testUpdate() {
-        Integer userId = 1;
-        Optional<Bike> byId = repo.findById(userId);
+        Integer bikeId = 1;
+        Optional<Bike> byId = repo.findById(bikeId);
 
         Bike bike = byId.get();
-        bike.setPassword("sth");
+        bike.setColor(Color.BLACK);
         repo.save(bike);
 
-        Bike updatedBike = repo.findById(userId).get();
-        Assertions.assertThat(updatedBike.getPassword().equals("sth"));
+        Bike updatedBike = repo.findById(bikeId).get();
+        Assertions.assertThat(updatedBike.getColor().equals(Color.BLACK));
 
     }
 
     @Test
     public void testGet() {
-        Integer userId = 1;
-        Optional<Bike> byId = repo.findById(userId);
+        Integer bikeId = 1;
+        Optional<Bike> byId = repo.findById(bikeId);
 
         Assertions.assertThat(byId).isPresent();
         System.out.println(byId.get());
@@ -70,9 +70,9 @@ public class BikeRepositoryTest {
 
     @Test
     public void testDelete() {
-        Integer userId = 2;
-        repo.deleteById(userId);
-        Optional<Bike> byId = repo.findById(userId);
+        Integer bikeId = 2;
+        repo.deleteById(bikeId);
+        Optional<Bike> byId = repo.findById(bikeId);
         Assertions.assertThat(byId).isNotPresent();
     }
 }*/
